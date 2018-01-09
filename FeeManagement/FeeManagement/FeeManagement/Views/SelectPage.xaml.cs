@@ -9,7 +9,14 @@ namespace FeeManagement.Views
     {
         public SelectPage()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:controls="clr-namespace:FeeManagement.Controls"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:vm="clr-namespace:FeeManagement.ViewModels"
-    x:Class="FeeManagement.Views.StartPage">
+    x:Class="FeeManagement.Views.StartPage"
+    x:Name="startPage">
     <ContentPage.BindingContext>
         <vm:StartPageViewModel/>
     </ContentPage.BindingContext>
@@ -15,21 +17,35 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Image Source="bg.jpg" Grid.Row="0" Grid.RowSpan="3" Aspect="Fill"/>
-            <Grid Grid.Row="1" Margin="25,25">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <controls:Tile TileImage="rupee.png" TileText="Fee" BackgroundColor="Gray">
-                    <controls:Tile.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding FeeCommand}"/>
-                    </controls:Tile.GestureRecognizers>
+            <RelativeLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+    <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.0}" 
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1.0}" 
+                    VerticalOptions="FillAndExpand" Spacing="0" Padding="0,0,0,0">
+        <flv:FlowListView FlowItemsSource="{Binding MenuList}" FlowLastTappedItem ="{Binding SelectedMenuItem}" 
+                        FlowItemTappedCommand ="{Binding MenuTappedCommand}" FlowColumnCount="2" 
+                        SeparatorVisibility="None" Margin = "10,15,10,10" HasUnevenRows="True">
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                  
+                            <controls:Tile TileImage="{Binding Icon}" TileText="{Binding Name}"
+                                     HeightRequest="125" WidthRequest="125" Padding="15,10" 
+                                     HorizontalOptions="Center" VerticalOptions="Center">
+                    
                 </controls:Tile>
-            </Grid>
+
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
+        </flv:FlowListView>
+
+
+    </StackLayout>
+    <StackLayout BackgroundColor="#90000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="activityIndicatorLayout" IsVisible="{Binding IsBusy}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1.0}">
+        <ActivityIndicator Color="White" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="FillAndExpand" x:Name="actIndicator" />
+    </StackLayout>
+    </RelativeLayout>
         </Grid>
 	</ContentPage.Content>
 </ContentPage>

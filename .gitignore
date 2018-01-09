@@ -3,3 +3,5 @@ FeeManagement/FeeManagement/FeeManagement/obj
 FeeManagement/FeeManagement/FeeManagement.Android/bin
 FeeManagement/FeeManagement/FeeManagement.Android/obj
 FeeManagement/packages
+*.userprefs
+*.db

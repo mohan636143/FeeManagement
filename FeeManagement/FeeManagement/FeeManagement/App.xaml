@@ -1,10 +1,70 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:FeeManagement.Controls"
              x:Class="FeeManagement.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+		<ResourceDictionary>
+
+            <Color x:Key="MainColor">#59db5a</Color>
+
+            <Style TargetType="{x:Type controls:RoundedView}" x:Key="DefRoundedViewStyle">
+                    <Setter Property="BorderColor" Value="Teal"/>
+                    <Setter Property="BorderThickness" >
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="2" iOS="2"/>
+                    </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderRadius" Value="20"/>     
+                    <Setter Property="HeightRequest" Value="40"/>
+                    <Setter Property="Padding" Value="6"/>
+            </Style>
+            
+            <Style TargetType="{x:Type controls:CustomPicker}" x:Key="PickerStyle">
+                    <Setter Property="BorderColor" Value="{StaticResource MainColor}"/>
+                    <Setter Property="BorderThickness" >
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="2" iOS="2"/>
+                    </Setter.Value>
+                    </Setter>   
+                    <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double" Android="45" iOS="35"/>
+                    </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderRadius" >
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="40" iOS="20"/>
+                    </Setter.Value>
+                    </Setter>
+                    <Setter Property="PickerTextColor" Value="Black"/>
+                    <Setter Property="PickerAnchorColor" Value="{StaticResource MainColor}"/>
+                    <Setter Property="Padding" Value="10,0"/>
+            </Style>
+
+            <Style TargetType="{x:Type controls:RoundedEntry}" x:Key="RoundedEntryStyle">
+                <Setter Property="BorderColor" Value="{StaticResource MainColor}" />
+                <Setter Property="BorderRadius">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="55" iOS="20"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double" Android="55" iOS="50"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FillColor" Value="White" />
+                <Setter Property="IsClippedToBounds" Value="True" />
+                <Setter Property="Padding">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Thickness" Android="20,0" iOS="20,0"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
 
 	</Application.Resources>
 </Application>

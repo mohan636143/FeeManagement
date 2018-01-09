@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using DLToolkit.Forms.Controls;
 
 namespace FeeManagement
 {
@@ -13,7 +14,7 @@ namespace FeeManagement
         public App()
         {
             InitializeComponent();
-
+            FlowListView.Init();
             MainPage = new StartPage();
         }
 

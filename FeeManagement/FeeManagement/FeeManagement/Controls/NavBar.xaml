@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="FeeManagement.Controls.NavBar"
+    HorizontalOptions="FillAndExpand" HeightRequest="60" 
+    Spacing="5" Orientation="Horizontal" >
+    <StackLayout.Padding>
+        <OnPlatform x:TypeArguments="Thickness" 
+        iOS="10, 20, 10, 0" Android="10, 0, 10, 0" WinPhone="0, 0, 0, 0" />
+    </StackLayout.Padding>
+    <Label x:Name="title" 
+    HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" 
+    VerticalTextAlignment="Center" Margin="5,0,0,0" HorizontalTextAlignment="Center" />
+</StackLayout>

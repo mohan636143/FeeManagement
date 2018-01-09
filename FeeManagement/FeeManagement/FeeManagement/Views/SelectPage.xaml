@@ -1,5 +1,46 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FeeManagement.Views.SelectPage">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:FeeManagement.Controls"
+    x:Class="FeeManagement.Views.SelectPage">
 	<ContentPage.Content>
+        <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <StackLayout 
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.0}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1.0}" VerticalOptions="FillAndExpand" Spacing="0" Padding="0,0,0,0">
+            <controls:NavBar HorizontalOptions="FillAndExpand" Tint="Gray" Title="Fee Management"/>
+            <Grid Padding="10" Margin="0,15,0,0" VerticalOptions="StartAndExpand"
+                    RowSpacing="15" ColumnSpacing="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+             <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                        Text="Select Class :"/>
+            <controls:CustomPicker 
+                        Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        ItemsSource="{Binding ClassList}" SelectedIndex="{Binding SelectedClass}"
+                        />
+                    <controls:RoundedEntry 
+                        Grid.Row="2" Grid.Column="0" 
+                        Text="{Binding ChildName}" />
+                    <Button Grid.Row="2" Grid.Column="1" 
+                        Text="Search" Command="{Binding SearchCommand}"/>
+                        
+            </Grid>
+
+        </StackLayout>
+       <!-- <StackLayout BackgroundColor="#90000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="activityIndicatorLayout" IsVisible="{Binding IsBusy}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1.0}">
+            <ActivityIndicator Color="White" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="FillAndExpand" x:Name="actIndicator" />
+        </StackLayout>-->
+    </RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>
