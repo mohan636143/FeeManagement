@@ -2,7 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:FeeManagement.Controls"
+    xmlns:vm="clr-namespace:FeeManagement.ViewModels"
     x:Class="FeeManagement.Views.SelectPage">
+    <ContentPage.BindingContext>
+        <vm:SelectPageViewModel/>
+    </ContentPage.BindingContext>
 	<ContentPage.Content>
         <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -24,14 +28,77 @@
              <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                         Text="Select Class :"/>
             <controls:CustomPicker 
-                        Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                         ItemsSource="{Binding ClassList}" SelectedIndex="{Binding SelectedClass}"
                         />
                     <controls:RoundedEntry 
                         Grid.Row="2" Grid.Column="0" 
-                        Text="{Binding ChildName}" />
-                    <Button Grid.Row="2" Grid.Column="1" 
-                        Text="Search" Command="{Binding SearchCommand}"/>
+                        Text="{Binding ChildName}"
+                    Style="{StaticResource RoundedEntryStyle}"/>
+                    <controls:RoundedButton Grid.Row="2" Grid.Column="1" 
+                        LabelText="Search" TapCommand="{Binding SearchCommand}"
+                        Style="{StaticResource DefRoundedBtnStyle}"/>
+                    <controls:ExtendedListView 
+                        Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                        HasUnevenRows="true" ItemsSource="{Binding StudentData}">
+                        <controls:ExtendedListView.Header>
+                            <!--<DataTemplate>
+                                <ViewCell>-->
+                                <Grid BackgroundColor="Gray">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Name" Grid.Column="0"
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                        Margin="10,5"/>
+                                    <Label Text="Class" Grid.Column="1"
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                        Margin="10,5"/>
+                                    <Label Text="Add Payment" Grid.Column="2"
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                        Margin="10,5" LineBreakMode="WordWrap"/>
+                                    <Label Text="View Report" Grid.Column="3"
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                        Margin="10,5" LineBreakMode="WordWrap"/>
+                                </Grid>
+                               <!-- </ViewCell>
+                            </DataTemplate>-->
+                        </controls:ExtendedListView.Header>
+                        <controls:ExtendedListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid BackgroundColor="Gray">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Name}" Grid.Column="0"
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                        Margin="10,5" LineBreakMode="WordWrap"/>
+                                    <Label Text="{Binding Class}" Grid.Column="1"
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        Margin="10,5" LineBreakMode="WordWrap"/>
+                                    <Image Source="add.png" Grid.Column="2"
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        Margin="10,5" HeightRequest="50" WidthRequest="50"/>
+                                    <Image Source="view.png" Grid.Column="3"
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        Margin="10,5" HeightRequest="50" WidthRequest="50"/>
+                                </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </controls:ExtendedListView.ItemTemplate>
+                    </controls:ExtendedListView>
                         
             </Grid>
 

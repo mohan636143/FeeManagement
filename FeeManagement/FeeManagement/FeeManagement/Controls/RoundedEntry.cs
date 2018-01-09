@@ -10,9 +10,11 @@ namespace FeeManagement.Controls
         {
             //this.Padding = new Thickness(this.BorderRadius,5);
             entry = new Entry();
+            Grid g = new Grid();
             entry.Margin = new Thickness(15, 5);
             entry.VerticalOptions = LayoutOptions.CenterAndExpand;
-            Children.Add(entry);
+            g.Children.Add(entry);
+            Children.Add(g);
         }
 
 

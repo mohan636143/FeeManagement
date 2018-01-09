@@ -8,9 +8,14 @@
 		<ResourceDictionary>
 
             <Color x:Key="MainColor">#59db5a</Color>
+            <Color x:Key="PageBackgroundColor">Black</Color>
 
+            <Style TargetType="{x:Type ContentPage}" >
+                <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
+            </Style>
+            
             <Style TargetType="{x:Type controls:RoundedView}" x:Key="DefRoundedViewStyle">
-                    <Setter Property="BorderColor" Value="Teal"/>
+                    <Setter Property="BorderColor" Value="{StaticResource MainColor}"/>
                     <Setter Property="BorderThickness" >
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:Int32" Android="2" iOS="2"/>
@@ -39,8 +44,9 @@
                     </Setter.Value>
                     </Setter>
                     <Setter Property="PickerTextColor" Value="Black"/>
+                    <Setter Property="PickerAnchor" Value="+"/>
                     <Setter Property="PickerAnchorColor" Value="{StaticResource MainColor}"/>
-                    <Setter Property="Padding" Value="10,0"/>
+                    <Setter Property="Padding" Value="10,0,20,0"/>
             </Style>
 
             <Style TargetType="{x:Type controls:RoundedEntry}" x:Key="RoundedEntryStyle">
@@ -56,7 +62,7 @@
                         <OnPlatform x:TypeArguments="x:Double" Android="55" iOS="50"/>
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FillColor" Value="White" />
+<!--                <Setter Property="FillColor" Value="Black" />-->
                 <Setter Property="IsClippedToBounds" Value="True" />
                 <Setter Property="Padding">
                     <Setter.Value>
@@ -64,6 +70,38 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+            <Style TargetType="{x:Type Label}" x:Key="DefRoundedBtnLabelStyle">
+                
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style TargetType="{x:Type controls:RoundedButton}" x:Key="DefRoundedBtnStyle">   
+                    <Setter Property="HeightRequest" Value="40"/>
+                    <Setter Property="BorderColor" Value="{StaticResource MainColor}"/>
+                    <Setter Property="FillColor" Value="{StaticResource MainColor}"/>
+                    <Setter Property="BorderThickness" >
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="2" iOS="2"/>
+                    </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderRadius">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="40" iOS="20"/>
+                    </Setter.Value>
+                </Setter> 
+                    <Setter Property="Padding" Value="6"/>
+<!--                    <Setter Property="FillColor" Value="#53d1ef"/>-->
+                    <Setter Property="Padding" Value="6"/>
+                    <Setter Property="LabelStyle" Value="{StaticResource DefRoundedBtnLabelStyle}" />
+                    <Setter Property="WidthRequest" Value="250"/>
+                    <Setter Property="HorizontalOptions" Value="Center"/>
+                    <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            
         </ResourceDictionary>
 
 	</Application.Resources>

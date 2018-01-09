@@ -117,6 +117,8 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\rupee.png" />
     <BundleResource Include="Resources\bg.jpg" />
+    <BundleResource Include="Resources\view.png" />
+    <BundleResource Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -144,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\">
-      <DependentUpon>Renderers</DependentUpon>
     </Folder>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
