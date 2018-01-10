@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:controls="clr-namespace:FeeManagement.Controls"
+    xmlns:vm="clr-namespace:FeeManagement.ViewModels"
+    x:Class="FeeManagement.Views.AddPaymentPage">
+    <ContentPage.BindingContext>
+        <vm:AddPaymentPageViewModel/>
+    </ContentPage.BindingContext>
+	<ContentPage.Content>
+         <StackLayout 
+                
+            VerticalOptions="FillAndExpand" Spacing="0" Padding="0,0,0,0">
+            <controls:NavBar HorizontalOptions="FillAndExpand" Tint="Gray" Title="Add Payment"/>
+            <Grid Padding="10" Margin="0,15,0,0" VerticalOptions="StartAndExpand"
+                    RowSpacing="15" ColumnSpacing="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+             <Label Grid.Row="0" Grid.Column="0" 
+                        Text="Date :"/>
+            <controls:RoundedView 
+                Grid.Row="0" Grid.Column="1" 
+            Style="{StaticResource DefRoundedViewStyle}">
+            <DatePicker
+                Date="{Binding PaymentDate}" Format="DD-MMM-YY"
+                BackgroundColor="Transparent"
+                />
+            </controls:RoundedView>
+
+            <Label Grid.Row="1" Grid.Column="0" 
+                        Text="Towards :"/>
+            <controls:RoundedEntry 
+                Grid.Row="1" Grid.Column="1"
+                    Text="{Binding Towards}"
+            Style="{StaticResource RoundedEntryStyle}"/>
+                
+            <Label Grid.Row="2" Grid.Column="0" 
+                        Text="Mode :"/>
+            <controls:RoundedEntry 
+                Grid.Row="2" Grid.Column="1"
+                    Text="{Binding Mode}"
+            Style="{StaticResource RoundedEntryStyle}"/>
+
+                <Label Grid.Row="3" Grid.Column="0" 
+                        Text="Amount :"/>
+            <controls:RoundedEntry 
+                Grid.Row="3" Grid.Column="1"
+                    Text="{Binding Amount}"
+            Style="{StaticResource RoundedEntryStyle}"/>
+
+                <controls:RoundedButton 
+                    Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                    HorizontalOptions="Center" VerticalOptions="Start"
+                LabelText="Update" Style="{StaticResource DefRoundedBtnStyle}"
+                TapCommand="{Binding UpdateCommand}"/>
+
+                        
+            </Grid>
+
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

@@ -3,15 +3,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:FeeManagement.Controls"
     xmlns:vm="clr-namespace:FeeManagement.ViewModels"
-    x:Class="FeeManagement.Views.SelectPage">
+    x:Class="FeeManagement.Views.SelectPage"
+    x:Name="selectPage"> 
     <ContentPage.BindingContext>
         <vm:SelectPageViewModel/>
     </ContentPage.BindingContext>
 	<ContentPage.Content>
-        <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
         <StackLayout 
-                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.0}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1.0}" VerticalOptions="FillAndExpand" Spacing="0" Padding="0,0,0,0">
+            
+            VerticalOptions="FillAndExpand" Spacing="0" Padding="0,0,0,0">
             <controls:NavBar HorizontalOptions="FillAndExpand" Tint="Gray" Title="Fee Management"/>
             <Grid Padding="10" Margin="0,15,0,0" VerticalOptions="StartAndExpand"
                     RowSpacing="15" ColumnSpacing="15">
@@ -42,8 +43,6 @@
                         Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                         HasUnevenRows="true" ItemsSource="{Binding StudentData}">
                         <controls:ExtendedListView.Header>
-                            <!--<DataTemplate>
-                                <ViewCell>-->
                                 <Grid BackgroundColor="Gray">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="2*"/>
@@ -68,8 +67,6 @@
                                         HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                                         Margin="10,5" LineBreakMode="WordWrap"/>
                                 </Grid>
-                               <!-- </ViewCell>
-                            </DataTemplate>-->
                         </controls:ExtendedListView.Header>
                         <controls:ExtendedListView.ItemTemplate>
                             <DataTemplate>
@@ -90,10 +87,22 @@
                                         Margin="10,5" LineBreakMode="WordWrap"/>
                                     <Image Source="add.png" Grid.Column="2"
                                         HorizontalOptions="Center" VerticalOptions="Center"
-                                        Margin="10,5" HeightRequest="50" WidthRequest="50"/>
+                                        Margin="10,5" HeightRequest="50" WidthRequest="50">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    Command="{Binding Source={x:Reference selectPage}, Path=BindingContext.AddComand}"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
                                     <Image Source="view.png" Grid.Column="3"
                                         HorizontalOptions="Center" VerticalOptions="Center"
-                                        Margin="10,5" HeightRequest="50" WidthRequest="50"/>
+                                        Margin="10,5" HeightRequest="50" WidthRequest="50">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    Command="{Binding Source={x:Reference selectPage}, Path=BindingContext.ViewComand}"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
                                 </Grid>
                                 </ViewCell>
                             </DataTemplate>
@@ -103,11 +112,6 @@
             </Grid>
 
         </StackLayout>
-       <!-- <StackLayout BackgroundColor="#90000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="activityIndicatorLayout" IsVisible="{Binding IsBusy}"
-                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.0}"
-                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1.0}">
-            <ActivityIndicator Color="White" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="FillAndExpand" x:Name="actIndicator" />
-        </StackLayout>-->
-    </RelativeLayout>
+      
 	</ContentPage.Content>
 </ContentPage>

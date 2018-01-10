@@ -53,7 +53,7 @@ namespace FeeManagement.ViewModels
             set
             {
                 isBusy = value;
-                SetProperty(ref isBusy, value);
+                SetProperty(ref isBusy, value,"IsBusy");
             }
         }
 

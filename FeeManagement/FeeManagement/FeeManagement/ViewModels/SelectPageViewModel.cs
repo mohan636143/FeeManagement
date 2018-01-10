@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using FeeManagement.Infrastructure;
 using FeeManagement.Models;
+using FeeManagement.Views;
+using Xamarin.Forms;
 
 namespace FeeManagement.ViewModels
 {
@@ -34,6 +37,9 @@ namespace FeeManagement.ViewModels
             }
         }
 
+        public ICommand AddComand { get; set; }
+        public ICommand ViewComand { get; set; }
+
         public SelectPageViewModel()
         {
             StudentData = new List<Student>()
@@ -44,6 +50,19 @@ namespace FeeManagement.ViewModels
                 new Student(){Name ="Student 4",Class="1"},
                 new Student(){Name ="Student 5",Class="1"},
             };
+
+            AddComand = new Command<Student>((obj)=>AddPaymentDetails(obj));
+            ViewComand = new Command<Student>((obj)=>ViewPaymentDetails(obj));
         }
+
+        private void AddPaymentDetails(Student student)
+        {
+            App.Current.MainPage = new AddPaymentPage();
+        }
+
+		private void ViewPaymentDetails(Student student)
+		{
+            App.Current.MainPage = new ViewFeeDetailsPage();
+		}
     }
 }

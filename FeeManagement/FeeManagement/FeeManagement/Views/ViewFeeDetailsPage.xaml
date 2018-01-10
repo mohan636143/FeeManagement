@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:controls="clr-namespace:FeeManagement.Controls"
+    xmlns:vm="clr-namespace:FeeManagement.ViewModels"
+    x:Class="FeeManagement.Views.ViewFeeDetailsPage">
+    <ContentPage.BindingContext>
+        <vm:ViewFeeDetailsPageViewModel/>
+    </ContentPage.BindingContext>
+	<ContentPage.Content>
+          <StackLayout 
+                
+            VerticalOptions="FillAndExpand" Spacing="0" Padding="0,0,0,0">
+            <controls:NavBar HorizontalOptions="FillAndExpand" Tint="Gray" Title="Fee Management"/>
+            <StackLayout Padding="10" Margin="0,15,0,0" VerticalOptions="StartAndExpand"
+                    Spacing="15" >
+                <Label Text="{Binding ChildName}" FontSize="Large"/>
+                <Label Text="{Binding ClassName}" FontSize="Medium"/>
+                <Label Text="{Binding JoinDate,StringFormat='Join Date : {0}'}" FontSize="Medium"/>
+                <Label Text="{Binding TotalFee,StringFormat='Total Fee : {0}'}" FontSize="Medium" />
+                <Label Text="Payment History" FontSize="Medium"/>
+                <controls:ExtendedListView 
+                        HasUnevenRows="true" ItemsSource="{Binding PaymentList}">
+                        <controls:ExtendedListView.Header>
+                            <!--<DataTemplate>
+                                <ViewCell>-->
+                                <Grid BackgroundColor="Gray">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Name" Grid.Column="0"/>
+                                    <Label Text="Class" Grid.Column="1"/>
+                                    <Label Text="Mode" Grid.Column="2" LineBreakMode="WordWrap"/>
+                                    <Label Text="Amount" Grid.Column="3" LineBreakMode="WordWrap"/>
+                                </Grid>
+                               <!-- </ViewCell>
+                            </DataTemplate>-->
+                        </controls:ExtendedListView.Header>
+                        <controls:ExtendedListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid BackgroundColor="Gray">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding PaymentDate}" Grid.Column="0" LineBreakMode="WordWrap"/>
+                                    <Label Text="{Binding Towards}" Grid.Column="1" LineBreakMode="WordWrap"/>
+                                    <Label Text="{Binding Mode}" Grid.Column="2" LineBreakMode="WordWrap"/>
+                                    <Label Text="{Binding Amount}" Grid.Column="3" LineBreakMode="WordWrap"/>
+                                </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </controls:ExtendedListView.ItemTemplate>
+                    </controls:ExtendedListView>
+                <Label Text="{Binding TotalPaid,StringFormat='Total : {0}'}" FontSize="Medium" 
+                HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                <Label Text="{Binding Balance,StringFormat='Balance : {0}'}" FontSize="Large" 
+                HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                </StackLayout>
+            </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

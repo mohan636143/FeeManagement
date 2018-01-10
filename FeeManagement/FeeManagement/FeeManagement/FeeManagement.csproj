@@ -65,6 +65,15 @@
     </Compile>
     <Compile Include="Controls\ExtendedListView.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Views\AddPaymentPage.xaml.cs">
+      <DependentUpon>AddPaymentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewFeeDetailsPage.xaml.cs">
+      <DependentUpon>ViewFeeDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AddPaymentPageViewModel.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="ViewModels\ViewFeeDetailsPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -89,6 +98,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RoundedButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddPaymentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewFeeDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

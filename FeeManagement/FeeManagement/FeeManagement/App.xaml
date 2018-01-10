@@ -101,6 +101,15 @@
                     <Setter Property="HorizontalOptions" Value="Center"/>
                     <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,5"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
             
         </ResourceDictionary>
 
